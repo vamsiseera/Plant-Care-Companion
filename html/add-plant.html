@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Plant | Plant Care Companion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/plants.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-background">
+
+    <div class="dashboard-orb orb-a"></div>
+    <div class="dashboard-orb orb-b"></div>
+    <div class="dashboard-orb orb-c"></div>
+
+    <div class="dashboard-grid"></div>
+
+    <div id="dashboardParticles"></div>
+
+</div>
+
+
+<div
+    class="dashboard-cursor-glow"
+    id="dashboardCursorGlow">
+</div>
+
+
+
+<!-- =========================================
+     PERMANENT SIDEBAR
+========================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+
+    <div class="sidebar-logo">
+
+        <div class="sidebar-logo-icon">
+            🌱
+        </div>
+
+        <div>
+
+            <h2>
+                Plant Care
+            </h2>
+
+            <span>
+                COMPANION
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <nav class="sidebar-nav">
+
+
+        <p class="nav-label">
+            MAIN MENU
+        </p>
+
+
+        <a
+            href="dashboard.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a
+            href="plants.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ♧
+            </span>
+
+            <span>
+                My Plants
+            </span>
+
+            <span
+                class="nav-count"
+                data-total-plants>
+                5
+            </span>
+
+        </a>
+
+
+        <a
+            href="add-plant.html"
+            class="nav-item active">
+
+            <span class="nav-icon">
+                ＋
+            </span>
+
+            <span>
+                Add Plant
+            </span>
+
+        </a>
+
+
+        <a
+            href="schedule.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ◷
+            </span>
+
+            <span>
+                Schedule
+            </span>
+
+        </a>
+
+
+        <p class="nav-label secondary-label">
+            SYSTEM
+        </p>
+
+
+        <a
+            href="settings.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ⚙
+            </span>
+
+            <span>
+                Settings
+            </span>
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="nav-item logout-item">
+
+            <span class="nav-icon">
+                ↪
+            </span>
+
+            <span>
+                Logout
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <div class="sidebar-bottom">
+
+
+        <div class="growth-card">
+
+            <div class="growth-glow"></div>
+
+            <div class="growth-icon">
+                ✦
+            </div>
+
+            <p>
+                YOUR GARDEN
+            </p>
+
+            <h3>
+                Is growing beautifully.
+            </h3>
+
+            <div class="growth-progress">
+                <span></span>
+            </div>
+
+            <small>
+                78% care consistency
+            </small>
+
+        </div>
+
+
+        <div class="profile-mini">
+
+            <div class="profile-avatar">
+                VC
+            </div>
+
+            <div class="profile-info">
+
+                <strong>
+                    Plant Keeper
+                </strong>
+
+                <span>
+                    Personal garden
+                </span>
+
+            </div>
+
+            <button>
+                ···
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =========================================
+     MAIN
+========================================== -->
+
+<main class="dashboard-main add-plant-main">
+
+
+    <header class="topbar">
+
+
+        <div class="mobile-brand">
+
+            <button
+                class="menu-button"
+                id="menuButton">
+
+                ☰
+
+            </button>
+
+            <span>
+                🌱 Plant Care
+            </span>
+
+        </div>
+
+
+        <div class="topbar-search">
+
+            <span>
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                placeholder="Search your plants...">
+
+            <kbd>
+                /
+            </kbd>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button
+                class="icon-button notification-button"
+                id="notificationButton">
+
+                ♢
+
+                <span class="notification-dot"></span>
+
+            </button>
+
+
+            <div class="date-display">
+
+                <span>
+                    TODAY
+                </span>
+
+                <strong id="currentDate">
+                    17 SEP 2026
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- CONTENT -->
+
+    <div class="add-plant-content">
+
+
+        <div class="page-heading">
+
+            <div>
+
+                <span class="page-kicker">
+                    EXPAND YOUR GARDEN
+                </span>
+
+                <h1>
+                    Add a New Plant
+                </h1>
+
+                <p>
+                    Tell us about your plant and we'll create
+                    its care schedule.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="add-plant-layout">
+
+
+            <!-- FORM -->
+
+            <div class="add-plant-card-form">
+
+
+                <form id="plantForm">
+
+
+                    <div class="form-section">
+
+                        <span class="form-section-label">
+                            PLANT INFORMATION
+                        </span>
+
+
+                        <div class="form-group">
+
+                            <label for="plantName">
+                                Plant Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="plantName"
+                                placeholder="e.g. My Monstera"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="species">
+                                Plant Type
+                            </label>
+
+                            <select
+                                id="species"
+                                required>
+
+                                <option value="">
+                                    Select a plant
+                                </option>
+
+                                <option value="money">
+                                    Money Plant
+                                </option>
+
+                                <option value="aloe">
+                                    Aloe Vera
+                                </option>
+
+                                <option value="rose">
+                                    Rose
+                                </option>
+
+                                <option value="snake">
+                                    Snake Plant
+                                </option>
+
+                                <option value="peace">
+                                    Peace Lily
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="lastWatered">
+                                Last Watered
+                            </label>
+
+                            <input
+                                type="date"
+                                id="lastWatered"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-section">
+
+                        <span class="form-section-label">
+                            CARE SCHEDULE
+                        </span>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Watering Frequency
+                            </label>
+
+
+                            <div class="frequency-options">
+
+
+                                <button
+                                    type="button"
+                                    class="frequency-option"
+                                    data-days="2">
+
+                                    Every 2 days
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="frequency-option"
+                                    data-days="3">
+
+                                    Every 3 days
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="frequency-option active"
+                                    data-days="7">
+
+                                    Every 7 days
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="frequency-option"
+                                    data-days="14">
+
+                                    Every 14 days
+
+                                </button>
+
+
+                            </div>
+
+
+                            <input
+                                type="hidden"
+                                id="frequency"
+                                value="7">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="waterSlider">
+
+                                Water Amount
+
+                                <strong>
+
+                                    <span id="waterAmount">
+                                        250
+                                    </span>
+
+                                    ml
+
+                                </strong>
+
+                            </label>
+
+
+                            <input
+                                type="range"
+                                id="waterSlider"
+                                min="50"
+                                max="1000"
+                                value="250"
+                                step="50">
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        id="savePlantButton"
+                        class="save-plant-button">
+
+                        Save Plant
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+
+            <!-- PREVIEW -->
+
+            <aside class="preview-card">
+
+
+                <span class="form-section-label">
+                    LIVE PREVIEW
+                </span>
+
+
+                <div
+                    class="preview-plant-icon"
+                    id="previewPlant">
+
+                    🌱
+
+                </div>
+
+
+                <h2 id="previewName">
+                    Your new plant
+                </h2>
+
+
+                <p id="previewSpecies">
+                    Plant type
+                </p>
+
+
+                <div class="preview-details">
+
+
+                    <div>
+
+                        <span>
+                            NEXT WATERING
+                        </span>
+
+                        <strong id="nextWatering">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            LAST WATERED
+                        </span>
+
+                        <strong id="previewLastWatered">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            FREQUENCY
+                        </span>
+
+                        <strong id="previewFrequency">
+                            Every 7 days
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            WATER AMOUNT
+                        </span>
+
+                        <strong>
+
+                            <span id="previewAmount">
+                                250
+                            </span>
+
+                            ml
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="preview-tip">
+
+                    <span>
+                        ✦
+                    </span>
+
+                    <p>
+                        We'll use these details to calculate
+                        your smart watering schedule.
+                    </p>
+
+                </div>
+
+
+            </aside>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script src="../javascript/main.js"></script>
+<script src="../javascript/dashboard.js"></script>
+<script src="../javascript/plants.js"></script>
+
+</body>
+
+</html>

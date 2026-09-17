@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plant Details | Plant Care Companion</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/plant-details.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="grid-bg"></div>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">🌱</div>
+
+            <div>
+                <h2>Plant Care</h2>
+                <span>COMPANION</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="dashboard.html">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="plants.html" class="active">
+                <span>🌿</span>
+                My Plants
+            </a>
+
+            <a href="add-plant.html">
+                <span>＋</span>
+                Add Plant
+            </a>
+
+            <a href="schedule.html">
+                <span>◷</span>
+                Schedule
+            </a>
+
+            <a href="#">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="mini-profile">
+
+                <div class="profile-avatar">
+                    V
+                </div>
+
+                <div>
+                    <strong>Plant Keeper</strong>
+                    <small>6 companions</small>
+                </div>
+
+            </div>
+
+            <a href="index.html" class="logout">
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="breadcrumb">
+                My Plants <span>/</span> Money Plant
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-button">
+                    🔔
+                    <i></i>
+                </button>
+
+                <div class="profile-small">
+
+                    <div class="profile-avatar">
+                        V
+                    </div>
+
+                    <span>Plant Keeper</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- BACK -->
+
+        <a href="plants.html" class="back-link">
+            ← Back to My Plants
+        </a>
+
+
+        <!-- HERO -->
+
+        <section class="plant-hero">
+
+
+            <div class="plant-visual">
+
+                <div class="visual-glow"></div>
+
+                <div class="plant-ring ring-one"></div>
+                <div class="plant-ring ring-two"></div>
+
+                <div class="plant-image">
+                    🪴
+                </div>
+
+                <div class="floating-leaf leaf-one">
+                    🍃
+                </div>
+
+                <div class="floating-leaf leaf-two">
+                    🌿
+                </div>
+
+            </div>
+
+
+            <div class="plant-introduction">
+
+                <div class="status-badge">
+                    <span></span>
+                    HEALTHY
+                </div>
+
+                <h1>
+                    Money Plant
+                </h1>
+
+                <p class="scientific">
+                    Epipremnum aureum
+                </p>
+
+                <p class="description">
+                    A resilient indoor companion known for its
+                    beautiful trailing leaves and easy-care nature.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <button class="primary-action"
+                            onclick="waterPlant()">
+                        💧 Water Plant
+                    </button>
+
+                    <button class="secondary-action"
+                            onclick="editPlant()">
+                        ✎ Edit
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-score">
+
+                <div class="score-ring">
+
+                    <div class="score-inner">
+                        <strong>72</strong>
+                        <span>%</span>
+                    </div>
+
+                </div>
+
+                <span>CARE HEALTH</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK INFORMATION -->
+
+        <section class="quick-info">
+
+
+            <div class="info-card">
+
+                <span class="info-icon">
+                    💧
+                </span>
+
+                <div>
+                    <small>LAST WATERED</small>
+                    <strong>10 Sep 2026</strong>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">
+                    ◷
+                </span>
+
+                <div>
+                    <small>NEXT WATERING</small>
+                    <strong>17 Sep 2026</strong>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">
+                    ↻
+                </span>
+
+                <div>
+                    <small>INTERVAL</small>
+                    <strong>Every 7 days</strong>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">
+                    ☀
+                </span>
+
+                <div>
+                    <small>LIGHT</small>
+                    <strong>Indirect</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOWER CONTENT -->
+
+        <div class="details-grid">
+
+
+            <!-- CARE ACTIVITY -->
+
+            <section class="activity-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span>CARE HISTORY</span>
+                        <h2>Recent activity</h2>
+                    </div>
+
+                    <button class="more-button">
+                        View all
+                    </button>
+
+                </div>
+
+
+                <div class="activity-list">
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            💧
+                        </div>
+
+                        <div class="activity-content">
+
+                            <strong>
+                                Plant watered
+                            </strong>
+
+                            <small>
+                                10 September 2026
+                            </small>
+
+                        </div>
+
+                        <span class="activity-time">
+                            6 days ago
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            ☀
+                        </div>
+
+                        <div class="activity-content">
+
+                            <strong>
+                                Light preference updated
+                            </strong>
+
+                            <small>
+                                08 September 2026
+                            </small>
+
+                        </div>
+
+                        <span class="activity-time">
+                            8 days ago
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            🌱
+                        </div>
+
+                        <div class="activity-content">
+
+                            <strong>
+                                Plant added
+                            </strong>
+
+                            <small>
+                                03 September 2026
+                            </small>
+
+                        </div>
+
+                        <span class="activity-time">
+                            13 days ago
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- CARE REQUIREMENTS -->
+
+            <section class="requirements-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span>CARE PROFILE</span>
+                        <h2>Plant requirements</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="requirement">
+
+                    <div class="requirement-icon">
+                        💧
+                    </div>
+
+                    <div class="requirement-text">
+
+                        <strong>Water</strong>
+
+                        <span>
+                            Moderate
+                        </span>
+
+                    </div>
+
+                    <div class="requirement-level">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="empty"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="requirement">
+
+                    <div class="requirement-icon">
+                        ☀
+                    </div>
+
+                    <div class="requirement-text">
+
+                        <strong>Light</strong>
+
+                        <span>
+                            Indirect sunlight
+                        </span>
+
+                    </div>
+
+                    <div class="requirement-level">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="empty"></i>
+                        <i class="empty"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="requirement">
+
+                    <div class="requirement-icon">
+                        🌡
+                    </div>
+
+                    <div class="requirement-text">
+
+                        <strong>Temperature</strong>
+
+                        <span>
+                            18–30°C
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+
+        <!-- SMART INSIGHT -->
+
+        <section class="insight">
+
+            <div class="insight-symbol">
+                ✦
+            </div>
+
+            <div>
+
+                <span>SMART INSIGHT</span>
+
+                <h3>
+                    Your Money Plant is on schedule.
+                </h3>
+
+                <p>
+                    Based on the last watering date and its
+                    7-day care interval, the next watering
+                    reminder is scheduled for tomorrow.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="../javascript/plant-details.js"></script>
+
+</body>
+</html>

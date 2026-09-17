@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | Plant Care Companion</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* =========================================
+           SETTINGS PAGE
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(90, 255, 160, 0.08), transparent 30%),
+                radial-gradient(circle at 85% 80%, rgba(70, 180, 255, 0.07), transparent 30%),
+                #07100d;
+            color: #edf8f1;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        /* SIDEBAR */
+
+        .settings-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 250px;
+            padding: 26px 18px;
+            background: rgba(8, 20, 15, 0.88);
+            border-right: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(22px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .settings-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 30px;
+        }
+
+        .settings-logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #72f6a4, #35c978);
+            color: #06120b;
+            font-size: 22px;
+            box-shadow: 0 8px 30px rgba(53,201,120,0.25);
+        }
+
+        .settings-logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .settings-logo-text span {
+            display: block;
+            color: #75e8a0;
+            font-size: 11px;
+            margin-top: 2px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .settings-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .settings-nav a {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 14px;
+            border-radius: 13px;
+            color: #91a89a;
+            transition: 0.25s ease;
+            font-size: 14px;
+        }
+
+        .settings-nav a:hover {
+            color: #ffffff;
+            background: rgba(255,255,255,0.05);
+            transform: translateX(3px);
+        }
+
+        .settings-nav a.active {
+            color: #8af4af;
+            background: rgba(90, 235, 143, 0.11);
+            box-shadow: inset 3px 0 0 #6be99a;
+        }
+
+        .nav-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .settings-bottom {
+            margin-top: auto;
+        }
+
+        .logout-link {
+            color: #d88f8f !important;
+        }
+
+        .logout-link:hover {
+            background: rgba(255,80,80,0.08) !important;
+        }
+
+        /* MAIN */
+
+        .settings-main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        .settings-topbar {
+            height: 76px;
+            padding: 0 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            background: rgba(7,16,13,0.55);
+            backdrop-filter: blur(18px);
+        }
+
+        .settings-page-title {
+            font-size: 23px;
+            font-weight: 750;
+            margin: 0;
+        }
+
+        .settings-page-subtitle {
+            margin: 5px 0 0;
+            color: #81958a;
+            font-size: 13px;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .notification-button {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 13px;
+            background: rgba(255,255,255,0.04);
+            color: #dcebe2;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .notification-button:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .profile-mini {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 10px;
+        }
+
+        .profile-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #72f6a4, #218d54);
+            color: #06120b;
+            font-weight: 800;
+        }
+
+        .profile-mini span {
+            color: #b7cabe;
+            font-size: 13px;
+        }
+
+        /* CONTENT */
+
+        .settings-content {
+            padding: 34px 38px 60px;
+            max-width: 1150px;
+        }
+
+        .settings-heading {
+            margin-bottom: 28px;
+        }
+
+        .settings-heading h1 {
+            margin: 0 0 8px;
+            font-size: 31px;
+            letter-spacing: -1px;
+        }
+
+        .settings-heading p {
+            margin: 0;
+            color: #80948a;
+            font-size: 14px;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .settings-card {
+            background: rgba(13, 29, 22, 0.78);
+            border: 1px solid rgba(255,255,255,0.075);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+            backdrop-filter: blur(18px);
+            transition: 0.25s ease;
+        }
+
+        .settings-card:hover {
+            border-color: rgba(115,239,157,0.18);
+            transform: translateY(-2px);
+        }
+
+        .settings-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin-bottom: 6px;
+        }
+
+        .card-title-icon {
+            width: 37px;
+            height: 37px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            background: rgba(104,231,148,0.1);
+            color: #78eea2;
+        }
+
+        .card-title h2 {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .card-description {
+            color: #788d81;
+            font-size: 12px;
+            margin: 0 0 21px 48px;
+        }
+
+        /* PROFILE */
+
+        .profile-box {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            padding: 16px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .large-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 19px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #79f4a4, #23915a);
+            color: #06120b;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .profile-info h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+        }
+
+        .profile-info p {
+            margin: 0;
+            color: #81968a;
+            font-size: 12px;
+        }
+
+        /* SETTINGS ROWS */
+
+        .setting-row {
+            min-height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.055);
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .setting-label small {
+            color: #74897d;
+            font-size: 11px;
+        }
+
+        /* TOGGLE */
+
+        .toggle {
+            position: relative;
+            width: 46px;
+            height: 25px;
+            flex-shrink: 0;
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            border-radius: 30px;
+            background: #26352e;
+            transition: 0.25s ease;
+        }
+
+        .toggle-slider::before {
+            content: "";
+            position: absolute;
+            width: 19px;
+            height: 19px;
+            left: 3px;
+            top: 3px;
+            border-radius: 50%;
+            background: #9aac9f;
+            transition: 0.25s ease;
+        }
+
+        .toggle input:checked + .toggle-slider {
+            background: rgba(82,220,130,0.35);
+        }
+
+        .toggle input:checked + .toggle-slider::before {
+            transform: translateX(21px);
+            background: #70efa0;
+        }
+
+        /* SELECT */
+
+        .settings-select {
+            min-width: 145px;
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #101e18;
+            color: #dce9df;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .settings-select:focus {
+            border-color: rgba(111,239,158,0.5);
+        }
+
+        /* ACTIONS */
+
+        .settings-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .settings-btn {
+            border: none;
+            border-radius: 12px;
+            padding: 11px 19px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .settings-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: #9caf9f;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .btn-primary {
+            color: #06120b;
+            background: linear-gradient(135deg, #7af3a6, #42d77e);
+            box-shadow: 0 8px 25px rgba(66,215,126,0.18);
+        }
+
+        /* DANGER */
+
+        .danger-zone {
+            border-color: rgba(240,90,90,0.13);
+        }
+
+        .danger-zone .card-title-icon {
+            background: rgba(240,90,90,0.08);
+            color: #ef8e8e;
+        }
+
+        .danger-text {
+            color: #89978f;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 12px 0 18px;
+        }
+
+        .danger-button {
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(240,90,90,0.2);
+            background: rgba(240,90,90,0.07);
+            color: #ed9999;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .danger-button:hover {
+            background: rgba(240,90,90,0.13);
+        }
+
+        /* TOAST */
+
+        .settings-toast {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            z-index: 3000;
+            padding: 14px 18px;
+            border-radius: 13px;
+            background: rgba(17,31,24,0.96);
+            border: 1px solid rgba(111,239,158,0.2);
+            color: #dff8e7;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+            transform: translateY(25px);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            font-size: 13px;
+        }
+
+        .settings-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* MOBILE */
+
+        .mobile-menu-button {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .settings-sidebar {
+                width: 220px;
+            }
+
+            .settings-main {
+                margin-left: 220px;
+            }
+
+            .settings-content {
+                padding: 28px 22px 50px;
+            }
+
+            .settings-topbar {
+                padding: 0 22px;
+            }
+
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-card.full-width {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .settings-sidebar {
+                transform: translateX(-100%);
+                transition: 0.3s ease;
+            }
+
+            .settings-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .settings-main {
+                margin-left: 0;
+            }
+
+            .settings-topbar {
+                height: 68px;
+                padding: 0 16px;
+            }
+
+            .settings-page-title {
+                font-size: 18px;
+            }
+
+            .profile-mini span {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: grid;
+                place-items: center;
+                width: 39px;
+                height: 39px;
+                border-radius: 11px;
+                border: 1px solid rgba(255,255,255,0.08);
+                background: rgba(255,255,255,0.04);
+                color: #dcebe2;
+                cursor: pointer;
+                margin-right: 9px;
+            }
+
+            .settings-content {
+                padding: 24px 15px 45px;
+            }
+
+            .settings-heading h1 {
+                font-size: 26px;
+            }
+
+            .settings-card {
+                padding: 19px;
+                border-radius: 17px;
+            }
+
+            .setting-row {
+                gap: 12px;
+            }
+
+            .settings-select {
+                min-width: 120px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="settings-sidebar" id="settingsSidebar">
+
+        <div class="settings-logo">
+            <div class="settings-logo-icon">🌱</div>
+
+            <div class="settings-logo-text">
+                Plant Care
+                <span>Companion</span>
+            </div>
+        </div>
+
+        <nav class="settings-nav">
+
+            <a href="dashboard.html">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="plants.html">
+                <span class="nav-icon">🌿</span>
+                My Plants
+            </a>
+
+            <a href="add-plant.html">
+                <span class="nav-icon">＋</span>
+                Add Plant
+            </a>
+
+            <a href="schedule.html">
+                <span class="nav-icon">◷</span>
+                Schedule
+            </a>
+
+            <a href="settings.html" class="active">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+        <div class="settings-bottom">
+            <a href="index.html" class="settings-nav logout-link">
+                <span class="nav-icon">↪</span>
+                Sign Out
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="settings-main">
+
+        <!-- TOPBAR -->
+        <header class="settings-topbar">
+
+            <div style="display:flex;align-items:center;">
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu">
+                    ☰
+                </button>
+
+                <div>
+                    <h2 class="settings-page-title">Settings</h2>
+                    <p class="settings-page-subtitle" id="settingsDate">
+                        Plant Care Companion
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    class="notification-button"
+                    id="notificationButton"
+                    aria-label="Notifications">
+                    🔔
+                </button>
+
+                <div class="profile-mini">
+                    <div class="profile-avatar">V</div>
+                    <span>Plant Lover</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="settings-content">
+
+            <div class="settings-heading">
+                <h1>Personalize your garden 🌿</h1>
+                <p>
+                    Manage reminders, preferences and your Plant Care Companion experience.
+                </p>
+            </div>
+
+
+            <div class="settings-grid">
+
+                <!-- PROFILE -->
+                <section class="settings-card">
+
+                    <div class="card-title">
+                        <div class="card-title-icon">👤</div>
+                        <h2>Profile</h2>
+                    </div>
+
+                    <p class="card-description">
+                        Your Plant Care Companion profile.
+                    </p>
+
+                    <div class="profile-box">
+
+                        <div class="large-avatar">V</div>
+
+                        <div class="profile-info">
+                            <h3>Plant Lover</h3>
+                            <p>Keeping plants happy, one watering at a time.</p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- NOTIFICATIONS -->
+                <section class="settings-card">
+
+                    <div class="card-title">
+                        <div class="card-title-icon">🔔</div>
+                        <h2>Notifications</h2>
+                    </div>
+
+                    <p class="card-description">
+                        Control your plant care reminders.
+                    </p>
+
+                    <div class="setting-row">
+
+                        <div class="setting-label">
+                            <strong>Watering reminders</strong>
+                            <small>Notify me when plants need water.</small>
+                        </div>
+
+                        <label class="toggle">
+                            <input
+                                type="checkbox"
+                                id="wateringNotifications"
+                                checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting-row">
+
+                        <div class="setting-label">
+                            <strong>Daily summary</strong>
+                            <small>Receive a quick daily care overview.</small>
+                        </div>
+
+                        <label class="toggle">
+                            <input
+                                type="checkbox"
+                                id="dailySummary">
+                            <span class="toggle-slider"></span>
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CARE PREFERENCES -->
+                <section class="settings-card">
+
+                    <div class="card-title">
+                        <div class="card-title-icon">💧</div>
+                        <h2>Care Preferences</h2>
+                    </div>
+
+                    <p class="card-description">
+                        Set your default watering preferences.
+                    </p>
+
+                    <div class="setting-row">
+
+                        <div class="setting-label">
+                            <strong>Reminder time</strong>
+                            <small>When watering notifications should appear.</small>
+                        </div>
+
+                        <select class="settings-select" id="reminderTime">
+                            <option value="07:00">7:00 AM</option>
+                            <option value="08:00" selected>8:00 AM</option>
+                            <option value="09:00">9:00 AM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                        </select>
+
+                    </div>
+
+                    <div class="setting-row">
+
+                        <div class="setting-label">
+                            <strong>Default water amount</strong>
+                            <small>Used when adding a new plant.</small>
+                        </div>
+
+                        <select class="settings-select" id="waterAmount">
+                            <option value="150">150 ml</option>
+                            <option value="250" selected>250 ml</option>
+                            <option value="350">350 ml</option>
+                            <option value="500">500 ml</option>
+                        </select>
+
+                    </div>
+
+                </section>
+
+
+                <!-- APPEARANCE -->
+                <section class="settings-card">
+
+                    <div class="card-title">
+                        <div class="card-title-icon">✨</div>
+                        <h2>Experience</h2>
+                    </div>
+
+                    <p class="card-description">
+                        Customize how the companion behaves.
+                    </p>
+
+                    <div class="setting-row">
+
+                        <div class="setting-label">
+                            <strong>Animated interface</strong>
+                            <small>Enable smooth visual effects.</small>
+                        </div>
+
+                        <label class="toggle">
+                            <input
+                                type="checkbox"
+                                id="animations"
+                                checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting-row">
+
+                        <div class="setting-label">
+                            <strong>Smart care mode</strong>
+                            <small>Use plant frequency for scheduling.</small>
+                        </div>
+
+                        <label class="toggle">
+                            <input
+                                type="checkbox"
+                                id="smartMode"
+                                checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SAVE -->
+                <section class="settings-card full-width">
+
+                    <div class="card-title">
+                        <div class="card-title-icon">💾</div>
+                        <h2>Save Preferences</h2>
+                    </div>
+
+                    <p class="card-description">
+                        Your settings are saved locally in this demo.
+                    </p>
+
+                    <div class="settings-actions">
+
+                        <button
+                            class="settings-btn btn-secondary"
+                            id="resetButton">
+                            Reset
+                        </button>
+
+                        <button
+                            class="settings-btn btn-primary"
+                            id="saveButton">
+                            Save Changes
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- DANGER -->
+                <section class="settings-card full-width danger-zone">
+
+                    <div class="card-title">
+                        <div class="card-title-icon">⚠</div>
+                        <h2>Account</h2>
+                    </div>
+
+                    <p class="card-description">
+                        Account-related actions.
+                    </p>
+
+                    <p class="danger-text">
+                        This demonstration does not use a real cloud account.
+                        Your current preferences are stored only in your browser.
+                    </p>
+
+                    <button
+                        class="danger-button"
+                        id="clearDataButton">
+                        Clear Saved Preferences
+                    </button>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div class="settings-toast" id="settingsToast">
+        Settings saved successfully.
+    </div>
+
+
+    <script>
+        /* =========================================
+           SETTINGS PAGE JAVASCRIPT
+        ========================================= */
+
+        const storageKey = "plantCareSettings";
+
+        const defaultSettings = {
+            wateringNotifications: true,
+            dailySummary: false,
+            reminderTime: "08:00",
+            waterAmount: "250",
+            animations: true,
+            smartMode: true
+        };
+
+        const wateringNotifications =
+            document.getElementById("wateringNotifications");
+
+        const dailySummary =
+            document.getElementById("dailySummary");
+
+        const reminderTime =
+            document.getElementById("reminderTime");
+
+        const waterAmount =
+            document.getElementById("waterAmount");
+
+        const animations =
+            document.getElementById("animations");
+
+        const smartMode =
+            document.getElementById("smartMode");
+
+        const saveButton =
+            document.getElementById("saveButton");
+
+        const resetButton =
+            document.getElementById("resetButton");
+
+        const clearDataButton =
+            document.getElementById("clearDataButton");
+
+        const toast =
+            document.getElementById("settingsToast");
+
+
+        function showToast(message) {
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+            clearTimeout(window.settingsToastTimer);
+
+            window.settingsToastTimer = setTimeout(function () {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+
+
+        function getSettings() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(storageKey);
+
+                if (!saved) {
+                    return { ...defaultSettings };
+                }
+
+                return {
+                    ...defaultSettings,
+                    ...JSON.parse(saved)
+                };
+
+            } catch (error) {
+
+                return { ...defaultSettings };
+
+            }
+        }
+
+
+        function applySettings(settings) {
+
+            wateringNotifications.checked =
+                settings.wateringNotifications;
+
+            dailySummary.checked =
+                settings.dailySummary;
+
+            reminderTime.value =
+                settings.reminderTime;
+
+            waterAmount.value =
+                settings.waterAmount;
+
+            animations.checked =
+                settings.animations;
+
+            smartMode.checked =
+                settings.smartMode;
+
+        }
+
+
+        function collectSettings() {
+
+            return {
+
+                wateringNotifications:
+                    wateringNotifications.checked,
+
+                dailySummary:
+                    dailySummary.checked,
+
+                reminderTime:
+                    reminderTime.value,
+
+                waterAmount:
+                    waterAmount.value,
+
+                animations:
+                    animations.checked,
+
+                smartMode:
+                    smartMode.checked
+
+            };
+
+        }
+
+
+        saveButton.addEventListener("click", function () {
+
+            const settings = collectSettings();
+
+            localStorage.setItem(
+                storageKey,
+                JSON.stringify(settings)
+            );
+
+            showToast("✓ Settings saved successfully.");
+
+        });
+
+
+        resetButton.addEventListener("click", function () {
+
+            applySettings(defaultSettings);
+
+            localStorage.removeItem(storageKey);
+
+            showToast("Settings restored to default.");
+
+        });
+
+
+        clearDataButton.addEventListener("click", function () {
+
+            const confirmed =
+                confirm(
+                    "Clear all saved Plant Care Companion preferences?"
+                );
+
+            if (!confirmed) {
+                return;
+            }
+
+            localStorage.removeItem(storageKey);
+
+            applySettings(defaultSettings);
+
+            showToast("Saved preferences cleared.");
+
+        });
+
+
+        /* NOTIFICATION BUTTON */
+
+        const notificationButton =
+            document.getElementById("notificationButton");
+
+        notificationButton.addEventListener("click", function () {
+
+            showToast(
+                wateringNotifications.checked
+                    ? "🌱 Watering reminders are enabled."
+                    : "Watering reminders are currently disabled."
+            );
+
+        });
+
+
+        /* MOBILE MENU */
+
+        const mobileMenuButton =
+            document.getElementById("mobileMenuButton");
+
+        const sidebar =
+            document.getElementById("settingsSidebar");
+
+        mobileMenuButton.addEventListener("click", function () {
+
+            sidebar.classList.toggle("open");
+
+        });
+
+
+        /* CLOSE MOBILE MENU AFTER NAVIGATION */
+
+        sidebar.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                sidebar.classList.remove("open");
+
+            });
+
+        });
+
+
+        /* CURRENT DATE */
+
+        const dateElement =
+            document.getElementById("settingsDate");
+
+        const today =
+            new Date();
+
+        dateElement.textContent =
+            today.toLocaleDateString("en-IN", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            });
+
+
+        /* LOAD SAVED SETTINGS */
+
+        applySettings(getSettings());
+
+
+        console.log("🌱 Plant Care Companion Settings loaded.");
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Schedule | Plant Care Companion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/schedule.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-background">
+
+    <div class="dashboard-orb orb-a"></div>
+    <div class="dashboard-orb orb-b"></div>
+    <div class="dashboard-orb orb-c"></div>
+
+    <div class="dashboard-grid"></div>
+
+    <div id="dashboardParticles"></div>
+
+</div>
+
+
+<div
+    class="dashboard-cursor-glow"
+    id="dashboardCursorGlow">
+</div>
+
+
+
+<!-- =========================================
+     PERMANENT SIDEBAR
+========================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+
+    <div class="sidebar-logo">
+
+        <div class="sidebar-logo-icon">
+            🌱
+        </div>
+
+        <div>
+
+            <h2>
+                Plant Care
+            </h2>
+
+            <span>
+                COMPANION
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <nav class="sidebar-nav">
+
+
+        <p class="nav-label">
+            MAIN MENU
+        </p>
+
+
+        <a
+            href="dashboard.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a
+            href="plants.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ♧
+            </span>
+
+            <span>
+                My Plants
+            </span>
+
+            <span
+                class="nav-count"
+                data-total-plants>
+                5
+            </span>
+
+        </a>
+
+
+        <a
+            href="add-plant.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ＋
+            </span>
+
+            <span>
+                Add Plant
+            </span>
+
+        </a>
+
+
+        <a
+            href="schedule.html"
+            class="nav-item active">
+
+            <span class="nav-icon">
+                ◷
+            </span>
+
+            <span>
+                Schedule
+            </span>
+
+        </a>
+
+
+        <p class="nav-label secondary-label">
+            SYSTEM
+        </p>
+
+
+        <a
+            href="settings.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ⚙
+            </span>
+
+            <span>
+                Settings
+            </span>
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="nav-item logout-item">
+
+            <span class="nav-icon">
+                ↪
+            </span>
+
+            <span>
+                Logout
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <div class="sidebar-bottom">
+
+
+        <div class="growth-card">
+
+            <div class="growth-glow"></div>
+
+            <div class="growth-icon">
+                ✦
+            </div>
+
+            <p>
+                YOUR GARDEN
+            </p>
+
+            <h3>
+                Is growing beautifully.
+            </h3>
+
+            <div class="growth-progress">
+                <span></span>
+            </div>
+
+            <small>
+                78% care consistency
+            </small>
+
+        </div>
+
+
+        <div class="profile-mini">
+
+            <div class="profile-avatar">
+                VC
+            </div>
+
+            <div class="profile-info">
+
+                <strong>
+                    Plant Keeper
+                </strong>
+
+                <span>
+                    Personal garden
+                </span>
+
+            </div>
+
+            <button>
+                ···
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =========================================
+     MAIN
+========================================== -->
+
+<main class="dashboard-main schedule-main">
+
+
+    <header class="topbar">
+
+
+        <div class="mobile-brand">
+
+            <button
+                class="menu-button"
+                id="menuButton">
+
+                ☰
+
+            </button>
+
+            <span>
+                🌱 Plant Care
+            </span>
+
+        </div>
+
+
+        <div class="topbar-search">
+
+            <span>
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                placeholder="Search your plants...">
+
+            <kbd>
+                /
+            </kbd>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button
+                class="icon-button notification-button"
+                id="notificationButton">
+
+                ♢
+
+                <span class="notification-dot"></span>
+
+            </button>
+
+
+            <div class="date-display">
+
+                <span>
+                    TODAY
+                </span>
+
+                <strong id="currentDate">
+                    17 SEP 2026
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =========================================
+         SCHEDULE CONTENT
+    ========================================== -->
+
+    <div class="schedule-content">
+
+
+        <div class="page-heading">
+
+            <div>
+
+                <span class="page-kicker">
+                    SMART CARE PLANNER
+                </span>
+
+                <h1>
+                    Watering Schedule
+                </h1>
+
+                <p>
+                    Know exactly when every plant needs
+                    your attention.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-button"
+                id="todayButton">
+
+                Today
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- Stats -->
+
+        <section class="schedule-stats">
+
+
+            <div class="schedule-stat-card">
+
+                <div class="stat-icon">
+                    ◌
+                </div>
+
+                <div
+                    class="stat-value"
+                    data-schedule-today>
+                    2
+                </div>
+
+                <div class="stat-label">
+                    Water Today
+                </div>
+
+            </div>
+
+
+            <div class="schedule-stat-card">
+
+                <div class="stat-icon">
+                    ◷
+                </div>
+
+                <div
+                    class="stat-value"
+                    data-schedule-upcoming>
+                    3
+                </div>
+
+                <div class="stat-label">
+                    Upcoming
+                </div>
+
+            </div>
+
+
+            <div class="schedule-stat-card">
+
+                <div class="stat-icon">
+                    !
+                </div>
+
+                <div
+                    class="stat-value"
+                    data-schedule-overdue>
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Overdue
+                </div>
+
+            </div>
+
+
+            <div class="schedule-stat-card">
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+                <div class="stat-value">
+                    94%
+                </div>
+
+                <div class="stat-label">
+                    Care Health
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Main Schedule Layout -->
+
+        <div class="schedule-layout">
+
+
+            <!-- Upcoming -->
+
+            <section class="schedule-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-kicker">
+                            YOUR ROUTINE
+                        </span>
+
+                        <h2>
+                            Upcoming Watering
+                        </h2>
+
+                    </div>
+
+                    <span class="panel-count">
+                        This week
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    class="schedule-list"
+                    id="scheduleList">
+
+
+                    <article class="schedule-item">
+
+
+                        <div class="schedule-date">
+
+                            <strong>
+                                17
+                            </strong>
+
+                            <span>
+                                SEP
+                            </span>
+
+                        </div>
+
+
+                        <div class="schedule-plant">
+
+                            <div class="schedule-plant-icon">
+                                🌿
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Money Plant
+                                </h3>
+
+                                <p>
+                                    250 ml · Today
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="schedule-status today">
+                            TODAY
+                        </span>
+
+
+                        <button
+                            class="schedule-water-button"
+                            data-plant-id="demo-money">
+
+                            Water
+
+                        </button>
+
+
+                    </article>
+
+
+
+                    <article class="schedule-item">
+
+
+                        <div class="schedule-date">
+
+                            <strong>
+                                18
+                            </strong>
+
+                            <span>
+                                SEP
+                            </span>
+
+                        </div>
+
+
+                        <div class="schedule-plant">
+
+                            <div class="schedule-plant-icon">
+                                🌵
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Aloe Vera
+                                </h3>
+
+                                <p>
+                                    180 ml · Tomorrow
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="schedule-status upcoming">
+                            UPCOMING
+                        </span>
+
+
+                        <button
+                            class="schedule-water-button"
+                            data-plant-id="demo-aloe">
+
+                            Water
+
+                        </button>
+
+
+                    </article>
+
+
+
+                    <article class="schedule-item">
+
+
+                        <div class="schedule-date">
+
+                            <strong>
+                                20
+                            </strong>
+
+                            <span>
+                                SEP
+                            </span>
+
+                        </div>
+
+
+                        <div class="schedule-plant">
+
+                            <div class="schedule-plant-icon">
+                                🌱
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Snake Plant
+                                </h3>
+
+                                <p>
+                                    300 ml · Sunday
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="schedule-status upcoming">
+                            UPCOMING
+                        </span>
+
+
+                        <button
+                            class="schedule-water-button"
+                            data-plant-id="demo-snake">
+
+                            Water
+
+                        </button>
+
+
+                    </article>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- Calendar -->
+
+            <section class="calendar-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-kicker">
+                            MONTH VIEW
+                        </span>
+
+                        <h2 id="monthTitle">
+                            September 2026
+                        </h2>
+
+                    </div>
+
+
+                    <div class="calendar-controls">
+
+                        <button
+                            id="previousMonth"
+                            class="calendar-button">
+
+                            ‹
+
+                        </button>
+
+
+                        <button
+                            id="nextMonth"
+                            class="calendar-button">
+
+                            ›
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="calendar-weekdays">
+
+                    <span>MON</span>
+                    <span>TUE</span>
+                    <span>WED</span>
+                    <span>THU</span>
+                    <span>FRI</span>
+                    <span>SAT</span>
+                    <span>SUN</span>
+
+                </div>
+
+
+                <div
+                    class="calendar-grid"
+                    id="calendarGrid">
+                </div>
+
+
+                <div class="calendar-legend">
+
+                    <span>
+
+                        <i class="legend-dot today-dot"></i>
+
+                        Today
+
+                    </span>
+
+
+                    <span>
+
+                        <i class="legend-dot watering-dot"></i>
+
+                        Watering
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="care-insight">
+
+                    <div class="insight-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Smart Care Insight
+                        </strong>
+
+                        <p>
+                            Keeping a consistent watering
+                            routine helps your plants stay
+                            healthy and strong.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script src="../javascript/main.js"></script>
+<script src="../javascript/dashboard.js"></script>
+<script src="../javascript/schedule.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Plants | Plant Care Companion</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Global + Dashboard Shell -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../css/plants.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
+
+    <div class="dashboard-background">
+
+        <div class="dashboard-orb orb-a"></div>
+        <div class="dashboard-orb orb-b"></div>
+        <div class="dashboard-orb orb-c"></div>
+
+        <div class="dashboard-grid"></div>
+
+        <div id="dashboardParticles"></div>
+
+    </div>
+
+
+    <!-- Cursor Glow -->
+
+    <div
+        class="dashboard-cursor-glow"
+        id="dashboardCursorGlow">
+    </div>
+
+
+    <!-- =========================================
+         PERMANENT SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+
+        <!-- Logo -->
+
+        <div class="sidebar-logo">
+
+            <div class="sidebar-logo-icon">
+                🌱
+            </div>
+
+            <div>
+
+                <h2>
+                    Plant Care
+                </h2>
+
+                <span>
+                    COMPANION
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="sidebar-nav">
+
+
+            <p class="nav-label">
+                MAIN MENU
+            </p>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="plants.html"
+                class="nav-item active">
+
+                <span class="nav-icon">
+                    ♧
+                </span>
+
+                <span>
+                    My Plants
+                </span>
+
+                <span class="nav-count" data-total-plants>
+                    5
+                </span>
+
+            </a>
+
+
+            <a
+                href="add-plant.html"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    ＋
+                </span>
+
+                <span>
+                    Add Plant
+                </span>
+
+            </a>
+
+
+            <a
+                href="schedule.html"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    ◷
+                </span>
+
+                <span>
+                    Schedule
+                </span>
+
+            </a>
+
+
+            <p class="nav-label secondary-label">
+                SYSTEM
+            </p>
+
+
+            <a
+                href="settings.html"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+            <a
+                href="index.html"
+                class="nav-item logout-item">
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="growth-card">
+
+                <div class="growth-glow"></div>
+
+                <div class="growth-icon">
+                    ✦
+                </div>
+
+                <p>
+                    YOUR GARDEN
+                </p>
+
+                <h3>
+                    Is growing beautifully.
+                </h3>
+
+                <div class="growth-progress">
+                    <span></span>
+                </div>
+
+                <small>
+                    78% care consistency
+                </small>
+
+            </div>
+
+
+            <div class="profile-mini">
+
+                <div class="profile-avatar">
+                    VC
+                </div>
+
+                <div class="profile-info">
+
+                    <strong>
+                        Plant Keeper
+                    </strong>
+
+                    <span>
+                        Personal garden
+                    </span>
+
+                </div>
+
+                <button>
+                    ···
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="dashboard-main plants-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="mobile-brand">
+
+                <button
+                    class="menu-button"
+                    id="menuButton">
+
+                    ☰
+
+                </button>
+
+                <span>
+                    🌱 Plant Care
+                </span>
+
+            </div>
+
+
+            <div class="topbar-search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    type="text"
+                    id="plantSearch"
+                    placeholder="Search your plants...">
+
+                <kbd>
+                    /
+                </kbd>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-button notification-button"
+                    id="notificationButton">
+
+                    ♢
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="date-display">
+
+                    <span>
+                        TODAY
+                    </span>
+
+                    <strong id="currentDate">
+                        17 SEP 2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================================
+             MY PLANTS CONTENT
+        ========================================== -->
+
+        <div class="plants-content">
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span class="page-kicker">
+                        YOUR COLLECTION
+                    </span>
+
+                    <h1>
+                        My Plants
+                    </h1>
+
+                    <p>
+                        Keep track of every plant and its daily care.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="add-plant.html"
+                    class="primary-button">
+
+                    + Add Plant
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Stats -->
+
+            <section class="plants-stats">
+
+
+                <div class="plant-stat-card">
+
+                    <div class="stat-icon">
+                        ♧
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        data-total-plants>
+                        5
+                    </div>
+
+                    <div class="stat-label">
+                        Total Plants
+                    </div>
+
+                </div>
+
+
+                <div class="plant-stat-card">
+
+                    <div class="stat-icon">
+                        ◌
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        data-needs-water>
+                        2
+                    </div>
+
+                    <div class="stat-label">
+                        Need Water
+                    </div>
+
+                </div>
+
+
+                <div class="plant-stat-card">
+
+                    <div class="stat-icon">
+                        ✦
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        data-healthy-plants>
+                        3
+                    </div>
+
+                    <div class="stat-label">
+                        Healthy Plants
+                    </div>
+
+                </div>
+
+
+                <div class="plant-stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-value">
+                        94%
+                    </div>
+
+                    <div class="stat-label">
+                        Garden Health
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- Toolbar -->
+
+            <div class="plants-toolbar">
+
+
+                <div class="filter-group">
+
+                    <button
+                        class="filter-button active"
+                        data-filter="all">
+
+                        All Plants
+
+                    </button>
+
+
+                    <button
+                        class="filter-button"
+                        data-filter="healthy">
+
+                        Healthy
+
+                    </button>
+
+
+                    <button
+                        class="filter-button"
+                        data-filter="needs-water">
+
+                        Needs Water
+
+                    </button>
+
+                </div>
+
+
+                <div class="view-controls">
+
+                    <button
+                        id="gridView"
+                        class="view-button active">
+
+                        ▦
+
+                    </button>
+
+
+                    <button
+                        id="listView"
+                        class="view-button">
+
+                        ☰
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Plant Cards -->
+
+            <div class="plants-grid">
+
+
+                <article class="plant-card">
+
+
+                    <div class="plant-card-top">
+
+                        <div class="plant-icon money">
+                            🌿
+                        </div>
+
+                        <span class="plant-status healthy">
+                            HEALTHY
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Money Plant
+                    </h3>
+
+                    <p class="plant-species">
+                        Epipremnum aureum
+                    </p>
+
+
+                    <div class="plant-details">
+
+                        <div>
+
+                            <span>
+                                WATER
+                            </span>
+
+                            <strong>
+                                250 ml
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                NEXT WATERING
+                            </span>
+
+                            <strong>
+                                Today
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="plant-card-footer">
+
+                        <span>
+                            💧 Needs care today
+                        </span>
+
+                        <button
+                            class="water-button"
+                            data-plant-id="demo-money">
+
+                            Water
+
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <article class="plant-card">
+
+
+                    <div class="plant-card-top">
+
+                        <div class="plant-icon aloe">
+                            🌵
+                        </div>
+
+                        <span class="plant-status healthy">
+                            HEALTHY
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Aloe Vera
+                    </h3>
+
+                    <p class="plant-species">
+                        Aloe barbadensis
+                    </p>
+
+
+                    <div class="plant-details">
+
+                        <div>
+
+                            <span>
+                                WATER
+                            </span>
+
+                            <strong>
+                                180 ml
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                NEXT WATERING
+                            </span>
+
+                            <strong>
+                                Tomorrow
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="plant-card-footer">
+
+                        <span>
+                            ✓ On schedule
+                        </span>
+
+                        <button
+                            class="water-button"
+                            data-plant-id="demo-aloe">
+
+                            Water
+
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <article class="plant-card">
+
+
+                    <div class="plant-card-top">
+
+                        <div class="plant-icon snake">
+                            🌱
+                        </div>
+
+                        <span class="plant-status needs-water">
+                            NEEDS WATER
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Snake Plant
+                    </h3>
+
+                    <p class="plant-species">
+                        Dracaena trifasciata
+                    </p>
+
+
+                    <div class="plant-details">
+
+                        <div>
+
+                            <span>
+                                WATER
+                            </span>
+
+                            <strong>
+                                300 ml
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                NEXT WATERING
+                            </span>
+
+                            <strong>
+                                Today
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="plant-card-footer">
+
+                        <span>
+                            💧 Water required
+                        </span>
+
+                        <button
+                            class="water-button"
+                            data-plant-id="demo-snake">
+
+                            Water
+
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <a
+                    href="add-plant.html"
+                    class="add-plant-card">
+
+                    <div class="add-plant-icon">
+                        +
+                    </div>
+
+                    <h3>
+                        Add another plant
+                    </h3>
+
+                    <p>
+                        Start tracking a new plant.
+                    </p>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/dashboard.js"></script>
+    <script src="../javascript/plants.js"></script>
+
+</body>
+
+</html>
